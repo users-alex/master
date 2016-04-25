@@ -1,0 +1,11 @@
+dd if=/dev/zero of=/swapfile bs=1024k count=600
+mkswap /swapfile
+echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+swapon -a
+useradd -m -s /bin/bash alex
+echo "alex ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-alex
+chmod 440 /etc/sudoers.d/90-alex
+( cd /home/alex;su alex -c 'cat /dev/zero | ssh-keygen -q -N ""' )
+curl https://gist.githubusercontent.com/alex2006hw/f0f54747f617851eb6e4/raw/5365ed9b05f9361f8f5429e905f70b781c241c9f/id_
+rsa.pub > /home/alex/.ssh/authorized_keys
+chown alex:alex /home/alex/.ssh/authorized_keys

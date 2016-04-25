@@ -1,0 +1,19 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+(/bin/umount /mnt; /sbin/mkfs.ext4 /dev/sdb1;mount -a;mkdir /mnt/mongodb;chown mongodb: /mnt/mongodb) && [ -f /mnt/swapfile ] && ( mkswap /mnt/swapfile; echo "/mnt/swapfile swap swap defaults 0 0" >> /etc/fstab; swapon -a )
+
+[ ! -f /mnt/swapfile ] && ( dd if=/dev/zero of=/mnt/swapfile bs=1024k count=4000; mkswap /swapfile; echo "/mnt/swapfile swap swap defaults 0 0" >> /etc/fstab; swapon -a) &
+
+
+exit 0

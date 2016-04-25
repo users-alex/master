@@ -1,0 +1,4 @@
+# Created by cloud-init v. 0.7.5 on Wed, 13 Jan 2016 10:55:03 +0000
+
+# User rules for alex
+alex ALL=(ALL) NOPASSWD:ALL

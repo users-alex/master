@@ -1,10 +1,8 @@
-.node-gyp
-.npm
-.python-history
 .bash_history
+.bash_logout
 .ssh
-.sudo_as_admin_successful
-.oracle_jre_usage
+.cache
 .viminfo
-work
 src
+work
+tmp

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function enc_gpg {
   if [[ -x /usr/local/bin/gpg || -x /usr/bin/gpg ]]; then
     gpg -c --batch --cipher-algo AES256 --passphrase $PASSWD -o $fileName.gpg $fileName
